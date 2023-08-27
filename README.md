@@ -1,5 +1,6 @@
 # ray-tracing-in-one-afternoon
 
+- [ ] data structures (vec3, color, ray, etc.)
 - [ ] ray generation
 - [ ] sphere intersection
 - [ ] ray bouncing
