@@ -2,7 +2,10 @@
 
 - [x] data structures (vec3, color, ray, etc.)
 - [x] ray generation
-- [ ] sphere intersection
+- [x] sphere intersection
+
+![simple-sphere](./media/simple-sphere.png)
+
 - [ ] ray bouncing
 - [ ] multi-sample anti-aliasing
 - [ ] Lambertian diffuse material

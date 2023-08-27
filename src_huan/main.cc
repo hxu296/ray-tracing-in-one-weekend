@@ -4,7 +4,28 @@
 
 #include <iostream>
 
+bool hit_sphere(const point3& center, double radius, const ray& r) {
+   // determine the number of solutions (t) for ray direction intersecting the sphere equation
+   // the quadratic equation is:
+   // t^2 * dot(B,B) + 2*t*dot(B,A-C) + dot(A-C,A-C) - R^2 = 0
+   // where A is the ray origin, B is the ray direction, C is the sphere center, R is the radius
+   // the descriminant is:
+   // D = b^2 - 4ac
+   // where a = dot(B,B), b = 2*dot(B,A-C), c = dot(A-C,A-C) - R^2
+   // if D < 0, there is no solution, the ray does not intersect the sphere
+   // if D = 0, there is one solution, the ray is tangent to the sphere
+   // if D > 0, there are two solutions, the ray goes through the sphere
+   auto a = dot(r.direction(), r.direction());
+   auto b = 2.0 * dot(r.direction(), r.origin() - center);
+   auto c = dot(r.origin() - center, r.origin() - center) - radius*radius;
+   auto discriminant = b*b - 4*a*c;
+   return (discriminant > 0);
+}
+
 color ray_color(const ray& r) {
+    if (hit_sphere(point3(0,0,-1), 0.5, r)) {
+        return color(1, 0, 0);
+    }
     vec3 unit_direction = unit_vector(r.direction());
     auto a = 0.5*(unit_direction.y() + 1.0); // y in [-1, 1], a in [0, 1]
     // blend value = (1-a)*start_value + a*end_value
@@ -12,7 +33,6 @@ color ray_color(const ray& r) {
 }
 
 int main() {
-
     // Image
     auto aspect_ratio = 16.0 / 9.0;
     int image_width = 400;
