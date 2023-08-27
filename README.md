@@ -6,8 +6,11 @@
 
 ![simple-sphere](./media/simple-sphere.png)
 
-- [ ] sphere with surface normals and colors
-- [ ] hittable object list and placing multiple spheres
+- [x] sphere with surface normals as color
+
+![surface-normals](./media/norm-sphere.png)
+
+- [ ] placing multiple spheres
 - [ ] multi-sample anti-aliasing
 - [ ] Lambertian diffuse material
 - [ ] ray bouncing

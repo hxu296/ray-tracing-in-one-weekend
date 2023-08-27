@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-bool hit_sphere(const point3& center, double radius, const ray& r) {
+double hit_sphere(const point3& center, double radius, const ray& r) {
    // determine the number of solutions (t) for ray direction intersecting the sphere equation
    // the quadratic equation is:
    // t^2 * dot(B,B) + 2*t*dot(B,A-C) + dot(A-C,A-C) - R^2 = 0
@@ -19,12 +19,23 @@ bool hit_sphere(const point3& center, double radius, const ray& r) {
    auto b = 2.0 * dot(r.direction(), r.origin() - center);
    auto c = dot(r.origin() - center, r.origin() - center) - radius*radius;
    auto discriminant = b*b - 4*a*c;
-   return (discriminant > 0);
+    if (discriminant < 0) {
+         return -1.0; // because t >= 0, -1.0 means no solution
+    } else {
+         // return the smaller t, it is the front intersection point
+         return (-b - sqrt(discriminant)) / (2.0*a);
+    }
 }
 
 color ray_color(const ray& r) {
-    if (hit_sphere(point3(0,0,-1), 0.5, r)) {
-        return color(1, 0, 0);
+    auto t = hit_sphere(point3(0,0,-1), 0.5, r);
+    if (t > 0.0) {
+        // calculate the intersection point
+        auto intersection_point = r.at(t);
+        // calculate the normal vector at the intersection point
+        auto normal = unit_vector(intersection_point - point3(0,0,-1));
+        // transform the normal vector to a color, normal in [-1, 1], color in [0, 1]
+        return 0.5 * color(normal.x()+1, normal.y()+1, normal.z()+1);
     }
     vec3 unit_direction = unit_vector(r.direction());
     auto a = 0.5*(unit_direction.y() + 1.0); // y in [-1, 1], a in [0, 1]
