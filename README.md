@@ -1,7 +1,7 @@
 # ray-tracing-in-one-afternoon
 
-- [ ] data structures (vec3, color, ray, etc.)
-- [ ] ray generation
+- [x] data structures (vec3, color, ray, etc.)
+- [x] ray generation
 - [ ] sphere intersection
 - [ ] ray bouncing
 - [ ] multi-sample anti-aliasing
