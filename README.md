@@ -35,7 +35,10 @@
 
 ![dielectric](./media/dielectric.png)
 
-- [ ] camera extrinsics & intrinsics
+- [x] camera extrinsics & intrinsics
+
+![camera](./media/camera.png)
+
 - [ ] Defocus Blur (depth of field)
 - [ ] multi-threaded rendering
 
