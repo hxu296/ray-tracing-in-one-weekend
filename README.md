@@ -1,4 +1,4 @@
-# ray-tracing-in-one-afternoon
+# ray-tracing-in-one-weekend
 
 - [x] data structures (vec3, color, ray, etc.)
 - [x] ray generation
