@@ -39,6 +39,9 @@
 
 ![camera](./media/camera.png)
 
-- [ ] Defocus Blur (depth of field)
+- [x] Defocus Blur (depth of field)
+
+![defocus-blur](./media/blur.png)
+
 - [ ] multi-threaded rendering
 
