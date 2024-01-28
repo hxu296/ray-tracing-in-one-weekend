@@ -1,8 +1,8 @@
 #pragma once
 #include "rtweekend.h"
-
 #include "color.h"
 #include "hittable.h"
+#include "material.h"
 #include <iostream>
 
 class camera {
@@ -72,8 +72,11 @@ class camera {
 
         hit_record rec;
         if (world.hit(r, interval(0.001, infinity), rec)) {
-            vec3 direction = rec.normal + random_unit_vector();
-            return 0.5 * ray_color(ray(rec.p, direction), depth-1, world);
+            ray scattered;
+            color attenuation;
+            if (rec.mat->scatter(r, rec, attenuation, scattered))
+                return attenuation * ray_color(scattered, depth-1, world);
+            return color(0,0,0);
         }
         vec3 unit_direction = unit_vector(r.direction());
         auto a = 0.5*(unit_direction.y() + 1.0); // y in [-1, 1], a in [0, 1]

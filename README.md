@@ -23,7 +23,14 @@
 
 ![lambertian](./media/diffuse.png)
 
-- [ ] reflective metal material
+- [x] reflective metal material
+
+![metal](./media/metal.png)
+
+- [x] fuzzy metal material
+
+![fuzzy-metal](./media/fuzzy-metal.png)
+
 - [ ] Snell's Law dielectric material with Schlick's approximation for reflectance
 - [ ] camera extrinsics & intrinsics
 - [ ] Defocus Blur (depth of field)
