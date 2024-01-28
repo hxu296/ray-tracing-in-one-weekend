@@ -1,2 +1,2 @@
 #!/bin/bash
-g++ main.cc -std=c++11 -o image-gen
+g++ main.cc -O3 -std=c++11 -o image-gen

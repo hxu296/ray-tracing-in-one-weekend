@@ -18,8 +18,11 @@
 
 ![msaa](./media/msaa.png)
 
-- [ ] Lambertian diffuse material
-- [ ] ray bouncing
+- [x] Lambertian diffuse material
+- [x] ray bouncing
+
+![lambertian](./media/diffuse.png)
+
 - [ ] reflective metal material
 - [ ] Snell's Law dielectric material with Schlick's approximation for reflectance
 - [ ] camera extrinsics & intrinsics
