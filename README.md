@@ -13,7 +13,9 @@
 - [x] placing multiple spheres
 
 ![multiple-spheres](./media/multi-sphere.png)
-- [ ] multi-sample anti-aliasing
+- [x] multi-sample anti-aliasing
+![msaa](./media/msaa.png)
+
 - [ ] Lambertian diffuse material
 - [ ] ray bouncing
 - [ ] reflective metal material
