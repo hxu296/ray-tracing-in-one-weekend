@@ -10,7 +10,9 @@
 
 ![surface-normals](./media/norm-sphere.png)
 
-- [ ] placing multiple spheres
+- [x] placing multiple spheres
+
+![multiple-spheres](./media/multi-sphere.png)
 - [ ] multi-sample anti-aliasing
 - [ ] Lambertian diffuse material
 - [ ] ray bouncing
