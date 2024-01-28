@@ -31,7 +31,10 @@
 
 ![fuzzy-metal](./media/fuzzy-metal.png)
 
-- [ ] Snell's Law dielectric material with Schlick's approximation for reflectance
+- [x] Snell's Law dielectric material with Schlick's approximation for reflectance
+
+![dielectric](./media/dielectric.png)
+
 - [ ] camera extrinsics & intrinsics
 - [ ] Defocus Blur (depth of field)
 - [ ] multi-threaded rendering
