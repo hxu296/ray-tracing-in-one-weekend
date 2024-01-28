@@ -1,41 +1,17 @@
 #include "color.h"
 #include "vec3.h"
 #include "ray.h"
+#include "hittable.h"
+#include "hittable_list.h"
+#include "sphere.h"
+#include "rtweekend.h"
 
 #include <iostream>
 
-double hit_sphere(const point3& center, double radius, const ray& r) {
-   // determine the number of solutions (t) for ray direction intersecting the sphere equation
-   // the quadratic equation is:
-   // t^2 * dot(B,B) + 2*t*dot(B,A-C) + dot(A-C,A-C) - R^2 = 0
-   // where A is the ray origin, B is the ray direction, C is the sphere center, R is the radius
-   // the descriminant is:
-   // D = b^2 - 4ac
-   // where a = dot(B,B), b = 2*dot(B,A-C), c = dot(A-C,A-C) - R^2
-   // if D < 0, there is no solution, the ray does not intersect the sphere
-   // if D = 0, there is one solution, the ray is tangent to the sphere
-   // if D > 0, there are two solutions, the ray goes through the sphere
-   auto a = dot(r.direction(), r.direction());
-   auto b = 2.0 * dot(r.direction(), r.origin() - center);
-   auto c = dot(r.origin() - center, r.origin() - center) - radius*radius;
-   auto discriminant = b*b - 4*a*c;
-    if (discriminant < 0) {
-         return -1.0; // because t >= 0, -1.0 means no solution
-    } else {
-         // return the smaller t, it is the front intersection point
-         return (-b - sqrt(discriminant)) / (2.0*a);
-    }
-}
-
-color ray_color(const ray& r) {
-    auto t = hit_sphere(point3(0,0,-1), 0.5, r);
-    if (t > 0.0) {
-        // calculate the intersection point
-        auto intersection_point = r.at(t);
-        // calculate the normal vector at the intersection point
-        auto normal = unit_vector(intersection_point - point3(0,0,-1));
-        // transform the normal vector to a color, normal in [-1, 1], color in [0, 1]
-        return 0.5 * color(normal.x()+1, normal.y()+1, normal.z()+1);
+color ray_color(const ray& r, const hittable& world) {
+    hit_record rec;
+    if (world.hit(r, 0, infinity, rec)) {
+        return 0.5 * (rec.normal + color(1,1,1)); // normal in [-1, 1], color in [0, 1]
     }
     vec3 unit_direction = unit_vector(r.direction());
     auto a = 0.5*(unit_direction.y() + 1.0); // y in [-1, 1], a in [0, 1]
@@ -51,6 +27,11 @@ int main() {
     // Calculate the image height, and ensure that it's at least 1.
     int image_height = static_cast<int>(image_width / aspect_ratio);
     image_height = (image_height < 1) ? 1 : image_height;
+
+    // World
+    hittable_list world;
+    world.add(make_shared<sphere>(point3(0,0,-1), 0.5));
+    world.add(make_shared<sphere>(point3(0,-100.5,-1), 100));
 
     // Camera, centered at (0,0,0), looking at the negative z-axis
     auto focal_length = 1.0; // distance from the camera center to viewport
@@ -90,7 +71,7 @@ int main() {
             auto ray_direction = pixel_center - camera_center;
             ray r(camera_center, ray_direction);
 
-            color pixel_color = ray_color(r);
+            color pixel_color = ray_color(r, world);
             write_color(std::cout, pixel_color);
         }
     }
