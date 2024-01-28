@@ -43,5 +43,7 @@
 
 ![defocus-blur](./media/blur.png)
 
-- [ ] multi-threaded rendering
+- [x] Final Scene
+
+![final-scene](./media/ray-trace.png)
 
