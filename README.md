@@ -47,18 +47,18 @@
 
 ![milestone1](./media/ray-trace.png)
 
-- [] Motion Blur
+- [ ] Motion Blur
 
-- [] Bounding Volume Hierarchy with AABB
+- [ ] Bounding Volume Hierarchy with AABB
 
-- [] Texture Mapping
+- [ ] Texture Mapping
 
-- [] Perlin Noise
+- [ ] Perlin Noise
 
-- [] Quadratic Surfaces
+- [ ] Quadratic Surfaces
 
-- [] Light
+- [ ] Light
 
-- [] Instances
+- [ ] Instances
 
-- [] Volumes
+- [ ] Volumes
