@@ -43,7 +43,22 @@
 
 ![defocus-blur](./media/blur.png)
 
-- [x] Final Scene
+- [x] Milestone 1 final render
 
-![final-scene](./media/ray-trace.png)
+![milestone1](./media/ray-trace.png)
 
+- [] Motion Blur
+
+- [] Bounding Volume Hierarchy with AABB
+
+- [] Texture Mapping
+
+- [] Perlin Noise
+
+- [] Quadratic Surfaces
+
+- [] Light
+
+- [] Instances
+
+- [] Volumes
